@@ -24,15 +24,16 @@ public class Robot extends ConceptTelemetry {
     public DcMotor topLeft;
     public DcMotor backRight;
     public DcMotor backLeft;
+    public DcMotor teamMarker;
     //declare servos
-    public Servo teamMarkerDump;
+   // public Servo teamMarkerDump;
     //declare sensors
     public ColorSensor sensorRGB;
     public BNO055IMU  imu;
     public Orientation angles;
     public Acceleration gravity;
     //declare HardwareMap variable
-    private HardwareMap hMap;
+    public HardwareMap hMap;
 
     public Robot (){ //constructor
 
@@ -47,13 +48,14 @@ public class Robot extends ConceptTelemetry {
         topLeft = hMap.dcMotor.get("topLeft");
         backLeft = hMap.dcMotor.get("backLeft");
         backRight = hMap.dcMotor.get("backRight");
+        teamMarker = hMap.dcMotor.get("teamMarker");
 
         //declare servos to hardwareMap
-        teamMarkerDump = hMap.servo.get("teamMarkerDump");
+       // teamMarkerDump = hMap.servo.get("teamMarkerDump");
 
         //declare sensors to hardwareMap
         sensorRGB = hMap.colorSensor.get("sensorRGB");
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
+        imu = hardwareMap.get(BNO055IMU.class, "imu"); //idk y
 
 
         topRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -98,7 +100,6 @@ public class Robot extends ConceptTelemetry {
     }
 
     public void turnRight(){
-telemetry.addData("f", backLeft);
     }
 
     public void turnLeft(){
